@@ -20,9 +20,9 @@ const Door: React.FC<DoorProps> = ({
 
   return (
     <div
-      className={`door ${isSelected ? "selected" : ""} ${
-        isWinning ? "winning" : ""
-      }`}
+      className={`w-24 h-48 m-2 bg-white border-2 border-gray-800 rounded cursor-pointer transition-transform transform ${
+        isSelected ? "bg-yellow-400" : ""
+      } ${isWinning ? "bg-green-400" : ""}`}
       onClick={handleClick}
     >
       Door {doorNumber}
