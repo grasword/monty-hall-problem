@@ -12,20 +12,27 @@ const Door: React.FC<DoorProps> = ({
   doorNumber,
   isSelected,
   isWinning,
+  isRevealed,
   onSelect,
 }) => {
   const handleClick = () => {
-    onSelect(doorNumber);
+    if (!isRevealed) {
+      onSelect(doorNumber);
+    }
   };
 
   return (
     <div
-      className={`w-24 h-48 m-2 bg-white border-2 border-gray-800 rounded cursor-pointer transition-transform transform ${
+      className={`w-24 h-48 m-2 bg-white border-2 border-gray-800 rounded cursor-pointer flex items-center justify-center transition-transform transform ${
         isSelected ? "bg-yellow-400" : ""
-      } ${isWinning ? "bg-green-400" : ""}`}
+      } ${isWinning && isRevealed ? "bg-green-400" : ""} ${
+        isRevealed && !isWinning ? "bg-red-400" : ""
+      }`}
       onClick={handleClick}
     >
-      Door {doorNumber}
+      <div className="text-center text-xl font-bold">
+        {isRevealed ? (isWinning ? "🏆" : "🐐") : `Door ${doorNumber + 1}`}
+      </div>
     </div>
   );
 };
