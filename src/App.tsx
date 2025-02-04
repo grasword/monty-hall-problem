@@ -4,8 +4,11 @@ import "./styles/App.css";
 
 const App: React.FC = () => {
   const [selectedDoor, setSelectedDoor] = useState<number | null>(null);
-  const [winningDoor] = useState<number>(Math.floor(Math.random() * 3));
+  const [winningDoor, setWinningDoor] = useState<number>(
+    Math.floor(Math.random() * 3)
+  );
   const [revealedDoor, setRevealedDoor] = useState<number | null>(null);
+  const [finalChoice, setFinalChoice] = useState<number | null>(null);
 
   const handleDoorClick = (door: number) => {
     if (selectedDoor === null) {
@@ -22,14 +25,21 @@ const App: React.FC = () => {
     setRevealedDoor(doorToReveal);
   };
 
+  const handleFinalChoice = (choice: number) => {
+    setFinalChoice(choice);
+  };
+
   const handleReset = () => {
     setSelectedDoor(null);
     setRevealedDoor(null);
+    setFinalChoice(null);
+    setWinningDoor(Math.floor(Math.random() * 3));
   };
 
   return (
     <div className="flex flex-col items-center justify-center h-screen bg-gray-100">
       <h1 className="text-4xl font-bold mb-8">Monty Hall Problem</h1>
+      <h2 className="text-2xl mb-4"> Select a door:</h2>
       <div className="flex">
         {Array.from({ length: 3 }, (_, index) => (
           <Door
@@ -42,16 +52,36 @@ const App: React.FC = () => {
           />
         ))}
       </div>
-      {selectedDoor !== null && (
-        <div className="mt-8 text-center">
-          {revealedDoor !== null && (
+      {selectedDoor !== null &&
+        revealedDoor !== null &&
+        finalChoice === null && (
+          <div className="mt-8 text-center">
             <p className="mb-4">
               You chose door {selectedDoor + 1}. Door {revealedDoor + 1} was
               revealed.
             </p>
-          )}
+            <p className="mb-4">
+              Do you want to stick with your choice or switch?
+            </p>
+            <button
+              className="px-4 py-2 bg-green-500 text-white rounded mr-4"
+              onClick={() => handleFinalChoice(selectedDoor)}
+            >
+              Stick
+            </button>
+            <button
+              className="px-4 py-2 bg-red-500 text-white rounded"
+              onClick={() => handleFinalChoice(3 - selectedDoor - revealedDoor)}
+            >
+              Switch
+            </button>
+          </div>
+        )}
+      {finalChoice !== null && (
+        <div className="mt-8 text-center">
+          <p className="mb-4">You chose door {finalChoice + 1}.</p>
           <p className="mb-4">
-            {selectedDoor === winningDoor ? "You win!" : "You lose!"}
+            {finalChoice === winningDoor ? "You win!" : "You lose!"}
           </p>
           <button
             className="px-4 py-2 bg-blue-500 text-white rounded"
