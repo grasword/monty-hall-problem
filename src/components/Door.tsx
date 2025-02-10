@@ -1,4 +1,5 @@
 import React from "react";
+import { testIds } from "../testIds";
 
 interface DoorProps {
   doorNumber: number;
@@ -29,8 +30,12 @@ const Door: React.FC<DoorProps> = ({
         isRevealed && !isWinning ? "bg-red-400" : ""
       }`}
       onClick={handleClick}
+      data-testid={testIds.door(doorNumber).container}
     >
-      <div className="text-center text-xl font-bold">
+      <div
+        className="text-center text-xl font-bold"
+        data-testid={testIds.door(doorNumber).label}
+      >
         {isRevealed ? (isWinning ? "🏆" : "🐐") : `Door ${doorNumber + 1}`}
       </div>
     </div>
