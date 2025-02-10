@@ -36,6 +36,7 @@ const useMontyHallGame = () => {
     setState((prevState) => ({
       ...prevState,
       finalChoice: choice,
+      selectedDoor: choice, // Update selectedDoor to the final choice
       revealedDoor: null, // Reset revealedDoor to show all doors
     }));
   };

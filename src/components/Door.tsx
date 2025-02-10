@@ -33,7 +33,7 @@ const Door: React.FC<DoorProps> = ({
       data-testid={testIds.door(doorNumber).container}
     >
       <div
-        className="text-center text-3xl font-bold" // Updated font size
+        className="text-center text-3xl font-bold"
         data-testid={testIds.door(doorNumber).label}
       >
         {isRevealed ? (isWinning ? "🏆" : "🐐") : `${doorNumber + 1}`}
