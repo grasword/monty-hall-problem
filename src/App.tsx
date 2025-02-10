@@ -31,7 +31,7 @@ const App: React.FC = () => {
             doorNumber={index}
             isSelected={state.selectedDoor === index}
             isWinning={state.winningDoor === index}
-            isRevealed={state.revealedDoor === index}
+            isRevealed={state.finalChoice !== null || state.revealedDoor === index}
             onSelect={handleDoorClick}
           />
         ))}
