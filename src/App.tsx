@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import Door from "./components/Door";
+import Statistics from "./components/Statistics"; // Import Statistics component
+import useMontyHallStatistics from "./hooks/useMontyHallStatistics"; // Import custom hook
 import "./styles/App.css";
 import { testIds } from "./testIds";
 
@@ -10,6 +12,13 @@ const App: React.FC = () => {
   );
   const [revealedDoor, setRevealedDoor] = useState<number | null>(null);
   const [finalChoice, setFinalChoice] = useState<number | null>(null);
+  const {
+    switchCount,
+    switchWins,
+    stickCount,
+    stickWins,
+    updateStatistics,
+  } = useMontyHallStatistics();
 
   const handleDoorClick = (door: number) => {
     if (selectedDoor === null) {
@@ -28,6 +37,7 @@ const App: React.FC = () => {
 
   const handleFinalChoice = (choice: number) => {
     setFinalChoice(choice);
+    updateStatistics(choice, selectedDoor!, winningDoor);
   };
 
   const handleReset = () => {
@@ -72,14 +82,14 @@ const App: React.FC = () => {
               Do you want to stick with your choice or switch?
             </p>
             <button
-              className="px-4 py-2 bg-green-500 text-white rounded mr-4"
+              className="px-4 py-2 bg-red-500 text-white rounded mr-4"
               onClick={() => handleFinalChoice(selectedDoor)}
               data-testid={testIds.app.stickButton}
             >
               Stick
             </button>
             <button
-              className="px-4 py-2 bg-red-500 text-white rounded"
+              className="px-4 py-2 bg-green-500 text-white rounded"
               onClick={() => handleFinalChoice(3 - selectedDoor - revealedDoor)}
               data-testid={testIds.app.switchButton}
             >
@@ -104,6 +114,12 @@ const App: React.FC = () => {
           </button>
         </div>
       )}
+      <Statistics
+        switchCount={switchCount}
+        switchWins={switchWins}
+        stickCount={stickCount}
+        stickWins={stickWins}
+      />
     </div>
   );
 };
