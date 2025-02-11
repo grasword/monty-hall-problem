@@ -1,6 +1,7 @@
 import React from "react";
 import Door from "./components/Door";
 import GameControls from "./components/GameControls";
+import GlobalStatistics from "./components/GlobalStatistics";
 import Statistics from "./components/Statistics";
 import useGlobalStatistics from "./hooks/useGlobalStatistics";
 import useMontyHallGame from "./hooks/useMontyHallGame";
@@ -11,7 +12,7 @@ import { testIds } from "./testIds";
 const App: React.FC = () => {
   const { state, handleDoorClick, handleFinalChoice, handleReset } = useMontyHallGame();
   const { switchCount, switchWins, stickCount, stickWins, updateStatistics } = useMontyHallStatistics();
-  const { gamesPlayed, stickCount: globalStickCount, stickWins: globalStickWins, switchCount: globalSwitchCount, switchWins: globalSwitchWins, updateGlobalStatistics } = useGlobalStatistics();
+  const { gamesPlayed, switchCount: globalSwitchCount, switchWins: globalSwitchWins, stickCount: globalStickCount, stickWins: globalStickWins, updateGlobalStatistics } = useGlobalStatistics();
 
   const handleFinalChoiceWithStats = (choice: number) => {
     handleFinalChoice(choice);
@@ -53,14 +54,13 @@ const App: React.FC = () => {
         stickCount={stickCount}
         stickWins={stickWins}
       />
-      <div className="mt-8 text-center">
-        <h2 className="text-2xl mb-4">Global Statistics</h2>
-        <p>Games Played: {gamesPlayed}</p>
-        <p>Switch Count: {globalSwitchCount}</p>
-        <p>Switch Wins: {globalSwitchWins}</p>
-        <p>Stick Count: {globalStickCount}</p>
-        <p>Stick Wins: {globalStickWins}</p>
-      </div>
+      <GlobalStatistics
+        gamesPlayed={gamesPlayed}
+        switchCount={globalSwitchCount}
+        switchWins={globalSwitchWins}
+        stickCount={globalStickCount}
+        stickWins={globalStickWins}
+      />
     </div>
   );
 };
