@@ -13,7 +13,7 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "jsx": "react-jsx",
-    "types": ["node", "@wdio/globals/types", "@wdio/mocha-framework"],
+    "types": ["node", "@wdio/globals/types", "@wdio/mocha-framework", "vite/client"],
   },
   "include": ["src", "tests", "wdio.conf.ts"],
   "exclude": ["node_modules"]
