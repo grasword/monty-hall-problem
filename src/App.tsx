@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Door from "./components/Door";
 import GameControls from "./components/GameControls";
 import GlobalStatistics from "./components/GlobalStatistics";
@@ -13,6 +13,7 @@ const App: React.FC = () => {
   const { state, handleDoorClick, handleFinalChoice, handleReset } = useMontyHallGame();
   const { switchCount, switchWins, stickCount, stickWins, updateStatistics } = useMontyHallStatistics();
   const { gamesPlayed, switchCount: globalSwitchCount, switchWins: globalSwitchWins, stickCount: globalStickCount, stickWins: globalStickWins, updateGlobalStatistics } = useGlobalStatistics();
+  const [showGlobalStats, setShowGlobalStats] = useState(false);
 
   const handleFinalChoiceWithStats = (choice: number) => {
     handleFinalChoice(choice);
@@ -54,13 +55,21 @@ const App: React.FC = () => {
         stickCount={stickCount}
         stickWins={stickWins}
       />
-      <GlobalStatistics
-        gamesPlayed={gamesPlayed}
-        switchCount={globalSwitchCount}
-        switchWins={globalSwitchWins}
-        stickCount={globalStickCount}
-        stickWins={globalStickWins}
-      />
+      <button
+        className="mt-4 px-4 py-2 bg-blue-500 text-white rounded"
+        onClick={() => setShowGlobalStats(!showGlobalStats)}
+      >
+        {showGlobalStats ? "Hide Global Statistics" : "Show Global Statistics"}
+      </button>
+      {showGlobalStats && (
+        <GlobalStatistics
+          gamesPlayed={gamesPlayed}
+          switchCount={globalSwitchCount}
+          switchWins={globalSwitchWins}
+          stickCount={globalStickCount}
+          stickWins={globalStickWins}
+        />
+      )}
     </div>
   );
 };
