@@ -1,5 +1,3 @@
-# FILE: /monty-hall-problem/monty-hall-problem/README.md
-
 # Monty Hall Problem Simulation
 
 This project is a React application that simulates the Monty Hall problem, allowing users to interact with three doors and understand the probabilities involved in this classic game show scenario.
@@ -36,5 +34,3 @@ To get started with the project, follow these steps:
    ```
    http://localhost:5173/
    ```
-
-## Project Structure
