@@ -1,6 +1,6 @@
 import { fireEvent, render, screen } from '@testing-library/react'
 import { describe, expect, it, vi } from 'vitest'
-import Door from '../components/Door.jsx'
+import { Door } from '../components/Door.jsx'
 import { testIds } from '../testIds.js'
 
 describe('Door Component', () => {
