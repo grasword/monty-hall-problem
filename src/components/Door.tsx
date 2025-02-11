@@ -42,4 +42,4 @@ const Door: React.FC<DoorProps> = ({
   );
 };
 
-export default Door;
+export { Door };

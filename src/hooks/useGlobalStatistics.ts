@@ -72,4 +72,4 @@ const useGlobalStatistics = () => {
   };
 };
 
-export default useGlobalStatistics;
+export { useGlobalStatistics }

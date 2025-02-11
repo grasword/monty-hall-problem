@@ -29,4 +29,4 @@ const useMontyHallStatistics = () => {
   };
 };
 
-export default useMontyHallStatistics;
+export { useMontyHallStatistics };

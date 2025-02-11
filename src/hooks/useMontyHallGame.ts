@@ -58,4 +58,4 @@ const useMontyHallGame = () => {
   };
 };
 
-export default useMontyHallGame;
+export { useMontyHallGame };

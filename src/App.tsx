@@ -1,13 +1,14 @@
-import React, { useState } from "react";
-import Door from "./components/Door";
-import GameControls from "./components/GameControls";
-import GlobalStatistics from "./components/GlobalStatistics";
-import Statistics from "./components/Statistics";
-import useGlobalStatistics from "./hooks/useGlobalStatistics";
-import useMontyHallGame from "./hooks/useMontyHallGame";
-import useMontyHallStatistics from "./hooks/useMontyHallStatistics";
-import "./styles/App.css";
-import { testIds } from "./testIds";
+import type React from 'react'
+import { useState } from 'react'
+import { Door } from './components/Door.jsx'
+import { GameControls } from './components/GameControls.jsx'
+import { GlobalStatistics } from './components/GlobalStatistics.jsx'
+import { Statistics } from './components/Statistics.jsx'
+import { useGlobalStatistics } from './hooks/useGlobalStatistics.js'
+import { useMontyHallGame } from './hooks/useMontyHallGame.js'
+import { useMontyHallStatistics } from './hooks/useMontyHallStatistics.js'
+import './styles/App.css'
+import { testIds } from './testIds.js'
 
 const App: React.FC = () => {
   const { state, handleDoorClick, handleFinalChoice, handleReset } = useMontyHallGame();
@@ -71,7 +72,7 @@ const App: React.FC = () => {
         />
       )}
     </div>
-  );
-};
+  )
+}
 
-export default App;
+export { App }
