@@ -23,6 +23,14 @@ class MainPage extends Page {
   public get playAgainButton() {
     return $(getByTestId(testIds.app.playAgainButton))
   }
+
+  public get toggleGlobalStatsButton() {
+    return $(getByTestId(testIds.app.toggleGlobalStats))
+  }
+
+  public get globalStatistics() {
+    return $(getByTestId(testIds.globalStats.container))
+  }
 }
 
 export const mainPage = new MainPage()
