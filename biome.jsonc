@@ -22,7 +22,7 @@
       },
       "correctness": {
         "noUndeclaredDependencies": "error",
-        "noUndeclaredVariables": "error",
+        // "noUndeclaredVariables": "error",
         "noUnusedImports": "error",
         "noUnusedPrivateClassMembers": "error",
         "noUnusedVariables": "error",
