@@ -6,6 +6,9 @@
   "scripts": {
     "start": "vite",
     "build": "vite build",
+    "check": "run-p check:*",
+    "check:eslint": "eslint . --report-unused-disable-directives --max-warnings 0",
+    "check:biome": "biome check ./src",
     "test": "vitest run",
     "wdio": "wdio run ./wdio.conf.ts"
   },
@@ -13,11 +16,7 @@
     "type": "git",
     "url": "git+https://github.com/grasword/monty-hall-problem.git"
   },
-  "keywords": [
-    "monty-hall",
-    "react",
-    "typescript"
-  ],
+  "keywords": ["monty-hall", "react", "typescript"],
   "author": "",
   "license": "ISC",
   "bugs": {
