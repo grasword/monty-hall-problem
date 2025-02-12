@@ -41,6 +41,7 @@
     "@wdio/mocha-framework": "9.7.3",
     "@wdio/spec-reporter": "9.8.0",
     "@wdio/types": "9.6.3",
+    "@wdio/globals": "9.8.0",
     "jsdom": "26.0.0",
     "tsx": "4.19.2",
     "vite": "6.0.11",
