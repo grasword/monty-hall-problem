@@ -1,33 +1,33 @@
-import { expect } from '@wdio/globals';
-import MainPage from '../pageobjects/main.page';
+import { expect } from '@wdio/globals'
+import { mainPage } from '../pageobjects/main.page'
 
 describe('Monty Hall application', () => {
-    beforeEach(async () => {
-        await MainPage.open();
-    });
+  beforeEach(async () => {
+    await mainPage.open()
+  })
 
-    it('should allow the user to select a door and stick with the choice', async () => {
-        await MainPage.door(0).click();
-        await MainPage.stickButton.click();
+  it('should allow the user to select a door and stick with the choice', async () => {
+    await mainPage.door(0).click()
+    await mainPage.stickButton.click()
 
-        await expect(MainPage.resultMessage).toBeExisting();
-    });
+    await expect(mainPage.resultMessage).toBeExisting()
+  })
 
-    it('should allow the user to select a door and switch the choice', async () => {
-        await MainPage.door(1).click();
-        await MainPage.switchButton.click();
+  it('should allow the user to select a door and switch the choice', async () => {
+    await mainPage.door(1).click()
+    await mainPage.switchButton.click()
 
-        await expect(MainPage.resultMessage).toBeExisting();
-    });
+    await expect(mainPage.resultMessage).toBeExisting()
+  })
 
-    it('should allow the user to play again after a game', async () => {
-        await MainPage.door(2).click();
-        await MainPage.stickButton.click();
+  it('should allow the user to play again after a game', async () => {
+    await mainPage.door(2).click()
+    await mainPage.stickButton.click()
 
-        await expect(MainPage.resultMessage).toBeExisting();
+    await expect(mainPage.resultMessage).toBeExisting()
 
-        await MainPage.playAgainButton.click();
+    await mainPage.playAgainButton.click()
 
-        await expect(MainPage.door(0)).toBeExisting();
-    });
-});
+    await expect(mainPage.door(0)).toBeExisting()
+  })
+})
