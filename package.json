@@ -11,7 +11,8 @@
     "check:biome": "biome check ./src",
     "test": "vitest run",
     "test:coverage": "vitest run --coverage",
-    "wdio": "wdio run ./wdio.conf.ts"
+    "wdio": "wdio run ./wdio.conf.ts",
+    "wdio:headless": "HEADLESS=true wdio run ./wdio.conf.ts"
   },
   "repository": {
     "type": "git",

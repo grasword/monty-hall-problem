@@ -38,4 +38,4 @@ jobs:
           npx wait-on http://localhost:5173
 
       - name: Run E2E tests
-        run: npm run wdio
+        run: npm run wdio:headless

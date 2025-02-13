@@ -1,4 +1,6 @@
 // eslint-ignore
+const isHeadless = process.env.HEADLESS === 'true'
+
 export const config: WebdriverIO.Config = {
   //
   // ====================
@@ -52,10 +54,16 @@ export const config: WebdriverIO.Config = {
   //
   capabilities: [
     {
-      browserName: 'chrome'
+      browserName: 'chrome',
+      'goog:chromeOptions': {
+        args: [...(isHeadless ? ['--headless', '--disable-gpu', '--no-sandbox', '--disable-dev-shm-usage'] : [])]
+      }
     },
     {
-      browserName: 'firefox'
+      browserName: 'firefox',
+      'moz:firefoxOptions': {
+        args: [...(isHeadless ? ['-headless'] : [])]
+      }
     }
   ],
 
