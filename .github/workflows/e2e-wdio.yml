@@ -1,0 +1,50 @@
+name: E2E Tests
+
+on:
+  push:
+
+jobs:
+  e2e:
+    runs-on: ubuntu-latest
+
+    services:
+      web:
+        image: node:23.7.0
+        ports:
+          - 5173:5173
+        options: >-
+          --health-cmd="curl --fail http://localhost:5173 || exit 1"
+          --health-interval=10s
+          --health-timeout=5s
+          --health-retries=5
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '23.7.0'
+
+      - name: Cache Node.js modules
+        uses: actions/cache@v2
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Build the application
+        run: npm run build
+
+      - name: Start the application
+        run: |
+          npm start &
+          npx wait-on http://localhost:5173
+
+      - name: Run E2E tests
+        run: npm run wdio
