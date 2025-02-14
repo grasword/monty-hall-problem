@@ -24,7 +24,11 @@ export const useGlobalStatistics = () => {
       const { data, error } = await supabase.from('statistics').select('*').eq('id', 'global').single()
 
       if (error) {
-        console.error('Error fetching statistics:', error.message)
+        if (error.code === '42P01') {
+          console.error('Table does not exist:', error.message)
+        } else {
+          console.error('Error fetching statistics:', error.message)
+        }
         return
       }
 
