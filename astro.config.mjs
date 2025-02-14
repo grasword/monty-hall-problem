@@ -21,7 +21,7 @@ export default defineConfig({
       // biome-ignore lint/style/useNamingConvention:
       SUPABASE_URL: envField.string({ context: 'client', access: 'public', optional: false }),
       // biome-ignore lint/style/useNamingConvention:
-      SUPABASE_API_KEY: envField.string({ context: 'client', access: 'public', optional: false })
+      SUPABASE_ANON_KEY: envField.string({ context: 'client', access: 'public', optional: false })
     }
   }
 })
