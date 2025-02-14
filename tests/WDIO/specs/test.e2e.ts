@@ -7,6 +7,7 @@ describe('Monty Hall application', () => {
   })
 
   it('should allow the user to select a door and stick with the choice', async () => {
+    await mainPage.door(0).waitForExist({ timeout: 10000 })
     await mainPage.door(0).click()
     await mainPage.stickButton.click()
 
