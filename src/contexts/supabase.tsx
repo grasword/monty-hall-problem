@@ -1,8 +1,10 @@
 import { createClient, type SupabaseClient } from '@supabase/supabase-js'
 import { createContext, useContext, type FC, type ReactNode } from 'react'
+// eslint-disable-next-line import-x/no-unresolved
+import { SUPABASE_API_KEY, SUPABASE_URL } from 'astro:env/client'
 
-const supabaseUrl = import.meta.env.VITE_SUPABASE_URL
-const supabaseAnonKey = import.meta.env.VITE_SUPABASE_API_KEY
+const supabaseUrl = SUPABASE_URL
+const supabaseAnonKey = SUPABASE_API_KEY
 
 interface SupabaseContextType {
   supabase: SupabaseClient
