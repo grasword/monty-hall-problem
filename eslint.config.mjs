@@ -9,14 +9,7 @@ export default [
       'n/no-unpublished-import': [
         'error',
         {
-          allowModules: [
-            'vite',
-            'vitest',
-            '@vitejs/plugin-react',
-            '@wdio/globals',
-            '@testing-library/jest-dom',
-            '@testing-library/react'
-          ]
+          allowModules: ['vite', 'vitest', '@wdio/globals', '@testing-library/jest-dom', '@testing-library/react']
         }
       ]
     }
