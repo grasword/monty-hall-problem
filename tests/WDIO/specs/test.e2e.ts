@@ -45,6 +45,6 @@ describe('Monty Hall application', () => {
     const isWin = resultMessage.includes('You win!')
     const isLose = resultMessage.includes('You lose!')
 
-    expect(isWin || isLose).toBe(true)
+    await expect(isWin || isLose).toBe(true)
   })
 })
