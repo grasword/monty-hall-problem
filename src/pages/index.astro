@@ -1,7 +1,10 @@
 ---
 import { App } from '../App.tsx'
+import { SupabaseProvider } from '../contexts/supabase.tsx'
 import Layout from '../layouts/Layout.astro'
 ---
 <Layout title="Home Page">
-  <App client:load/>
+  <SupabaseProvider client:load>
+    <App client:load/>
+  </SupabaseProvider>
 </Layout>
