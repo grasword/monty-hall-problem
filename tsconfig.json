@@ -1,6 +1,8 @@
 {
   "extends": "astro/tsconfigs/strict",
   "compilerOptions": {
+    "jsx": "react-jsx",
+    "jsxImportSource": "react",
     "types": [
       "@types/node",
       "@types/react-dom",
@@ -10,5 +12,13 @@
       "vite/client"
     ]
   },
-  "include": ["src", "tests", "wdio.conf.ts", "vite.config.ts", "vitest.config.ts", ".astro/types.d.ts"]
+  "include": [
+    ".astro/types.d.ts",
+    "astro.config.mjs",
+    "src",
+    "tests",
+    "vite.config.ts",
+    "vitest.config.ts",
+    "wdio.conf.ts"
+  ]
 }
