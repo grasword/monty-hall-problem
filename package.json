@@ -21,6 +21,7 @@
   "scripts": {
     "build": "astro build",
     "check": "run-p check:*",
+    "check:astro": "astro check",
     "check:biome": "biome check ./src",
     "check:eslint": "eslint . --report-unused-disable-directives --max-warnings 0",
     "dev": "astro dev",
