@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { supabase } from '../supabaseConfig.js'
+import { useSupabase } from './supabaseContext'
 
 interface GlobalStatistics {
   gamesPlayed: number
@@ -11,7 +11,8 @@ interface GlobalStatistics {
 
 type Choice = number
 
-const useGlobalStatistics = () => {
+export const useGlobalStatistics = () => {
+  const { supabase } = useSupabase()
   const [gamesPlayed, setGamesPlayed] = useState(0)
   const [stickCount, setStickCount] = useState(0)
   const [stickWins, setStickWins] = useState(0)
@@ -34,7 +35,7 @@ const useGlobalStatistics = () => {
         setSwitchCount(data.switchCount)
         setSwitchWins(data.switchWins)
       } else {
-        // Insert default data if it doesn’t exist
+        // Insert default data if it doesn't exist
         const { error: insertError } = await supabase.from('statistics').insert([
           {
             id: 'global',
@@ -52,7 +53,7 @@ const useGlobalStatistics = () => {
     }
 
     void fetchGlobalStats()
-  }, [])
+  }, [supabase])
 
   const updateGlobalStatistics = async (choice: Choice, selectedDoor: number, winningDoor: number): Promise<void> => {
     const isWin = choice === winningDoor
@@ -89,5 +90,3 @@ const useGlobalStatistics = () => {
     updateGlobalStatistics
   }
 }
-
-export { useGlobalStatistics }
