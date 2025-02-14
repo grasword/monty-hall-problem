@@ -2,6 +2,21 @@
   "name": "monty-hall-problem",
   "version": "1.0.0",
   "description": "A React application to practice the Monty Hall problem.",
+  "keywords": [
+    "monty-hall",
+    "react",
+    "typescript"
+  ],
+  "homepage": "https://github.com/grasword/monty-hall-problem#readme",
+  "bugs": {
+    "url": "https://github.com/grasword/monty-hall-problem/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/grasword/monty-hall-problem.git"
+  },
+  "license": "ISC",
+  "author": "",
   "type": "module",
   "scripts": {
     "start": "vite",
@@ -14,17 +29,6 @@
     "wdio": "wdio run ./wdio.conf.ts",
     "wdio:headless": "HEADLESS=true wdio run ./wdio.conf.ts"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/grasword/monty-hall-problem.git"
-  },
-  "keywords": ["monty-hall", "react", "typescript"],
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/grasword/monty-hall-problem/issues"
-  },
-  "homepage": "https://github.com/grasword/monty-hall-problem#readme",
   "dependencies": {
     "@supabase/supabase-js": "2.48.1",
     "@tailwindcss/vite": "4.0.3",
@@ -40,6 +44,8 @@
     "@testing-library/jest-dom": "6.6.3",
     "@testing-library/react": "16.2.0",
     "@testing-library/user-event": "14.6.1",
+    "@tsconfig/vite-react": "3.4.0",
+    "@types/node": "22.13.4",
     "@types/react": "19.0.8",
     "@types/react-dom": "19.0.3",
     "@vitejs/plugin-react": "4.3.4",
