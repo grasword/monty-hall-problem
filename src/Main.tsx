@@ -1,13 +1,13 @@
 import type { FC } from 'react'
 import { useState } from 'react'
-import { Door } from './components/Door.js'
-import { GameControls } from './components/GameControls.js'
-import { GlobalStatistics } from './components/GlobalStatistics.js'
-import { Statistics } from './components/Statistics.js'
-import { useGlobalStatistics } from './hooks/useGlobalStatistics.js'
-import { useMontyHallGame } from './hooks/useMontyHallGame.js'
-import { useMontyHallStatistics } from './hooks/useMontyHallStatistics.js'
-import { testIds } from './testIds.js'
+import { Door } from '~/components/Door.tsx'
+import { GameControls } from '~/components/GameControls.tsx'
+import { GlobalStatistics } from '~/components/GlobalStatistics.tsx'
+import { Statistics } from '~/components/Statistics.tsx'
+import { useGlobalStatistics } from '~/hooks/useGlobalStatistics.tsx'
+import { useMontyHallGame } from '~/hooks/useMontyHallGame'
+import { useMontyHallStatistics } from '~/hooks/useMontyHallStatistics.tsx'
+import { testIds } from '~/testIds.ts'
 
 export const Main: FC = () => {
   const { state, handleDoorClick, handleFinalChoice, handleReset } = useMontyHallGame()

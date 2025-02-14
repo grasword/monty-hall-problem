@@ -1,7 +1,7 @@
 import type { FC } from 'react'
-import { SupabaseProvider } from './contexts/supabase.tsx'
-import { Main } from './Main.tsx'
-import type { AppConfig } from './types.ts'
+import { SupabaseProvider } from '~/contexts/supabase.tsx'
+import { Main } from '~/Main.tsx'
+import type { AppConfig } from '~/types.ts'
 
 type AppProps = {
   config: AppConfig
