@@ -1,5 +1,5 @@
 {
-  "extends": "@tsconfig/vite-react/tsconfig.json",
+  "extends": "astro/tsconfigs/strict",
   "compilerOptions": {
     "types": [
       "@types/node",
@@ -10,5 +10,5 @@
       "vite/client"
     ]
   },
-  "include": ["src", "tests", "wdio.conf.ts", "vite.config.ts", "vitest.config.ts"]
+  "include": ["src", "tests", "wdio.conf.ts", "vite.config.ts", "vitest.config.ts", ".astro/types.d.ts"]
 }

@@ -43,3 +43,6 @@ coverage
 
 ## API keys and secrets
 .env
+
+## Astro
+.astro
