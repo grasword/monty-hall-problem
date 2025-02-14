@@ -1,8 +1,17 @@
 ---
 import { App } from '../App.tsx'
 import Layout from '../layouts/main.astro'
+import type { AppConfig } from '../types.ts'
+
+const config: AppConfig = {
+  title: 'Monty Hall Problem',
+  supabase: {
+    supabaseUrl: import.meta.env.SUPABASE_URL,
+    supabaseAnonKey: import.meta.env.SUPABASE_ANON_KEY
+  }
+}
 ---
 
-<Layout title="Home Page">
-  <App/>
+<Layout title={config.title}>
+  <App client:load config={config} />
 </Layout>

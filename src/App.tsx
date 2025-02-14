@@ -1,10 +1,15 @@
 import type { FC } from 'react'
-import { Main } from './Main.tsx'
 import { SupabaseProvider } from './contexts/supabase.tsx'
+import { Main } from './Main.tsx'
+import type { AppConfig } from './types.ts'
 
-export const App: FC = () => {
+type AppProps = {
+  config: AppConfig
+}
+
+export const App: FC<AppProps> = ({ config }) => {
   return (
-    <SupabaseProvider>
+    <SupabaseProvider config={config.supabase}>
       <Main />
     </SupabaseProvider>
   )

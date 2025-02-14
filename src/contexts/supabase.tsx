@@ -1,15 +1,6 @@
 import { createClient, type AuthError, type AuthResponse, type SupabaseClient, type User } from '@supabase/supabase-js'
 import { createContext, useContext, useEffect, useState, type FC, type ReactNode } from 'react'
 
-const supabaseUrl = import.meta.env.SUPABASE_URL
-const supabaseAnonKey = import.meta.env.SUPABASE_ANON_KEY
-
-if (!supabaseUrl || !supabaseAnonKey) {
-  throw new Error('Missing Supabase environment variables')
-}
-
-const supabase = createClient(supabaseUrl, supabaseAnonKey)
-
 type SupabaseContextValue = {
   supabase: SupabaseClient
   user: User | null
@@ -20,16 +11,28 @@ type SupabaseContextValue = {
   signUp: (email: string, password: string) => Promise<AuthResponse | null>
 }
 
+export type SupabaseConfig = {
+  supabaseUrl: string
+  supabaseAnonKey: string
+}
+
 type SupabaseProviderProps = {
   children: ReactNode
+  config: SupabaseConfig
 }
 
 const SupabaseContext = createContext<SupabaseContextValue | undefined>(undefined)
 
-export const SupabaseProvider: FC<SupabaseProviderProps> = ({ children }) => {
+export const SupabaseProvider: FC<SupabaseProviderProps> = ({ children, config }) => {
   const [user, setUser] = useState<User | null>(null)
   const [loading, setLoading] = useState<boolean>(true)
   const [error, setError] = useState<string | null>(null)
+
+  if (!config.supabaseUrl || !config.supabaseAnonKey) {
+    throw new Error('Missing Supabase environment variables!')
+  }
+
+  const supabase = createClient(config.supabaseUrl, config.supabaseAnonKey)
 
   useEffect(() => {
     const getInitialSession = async () => {
@@ -61,7 +64,7 @@ export const SupabaseProvider: FC<SupabaseProviderProps> = ({ children }) => {
     return () => {
       subscription.unsubscribe()
     }
-  }, [])
+  }, [supabase.auth])
 
   const signIn = async (email: string, password: string): Promise<AuthResponse | null> => {
     try {
