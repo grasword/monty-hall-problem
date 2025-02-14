@@ -32,7 +32,7 @@
         "noBarrelFile": "error"
       },
       "style": {
-        "noDefaultExport": "error",
+        // "noDefaultExport": "error",
         "noNamespace": "error",
         "noNamespaceImport": "error",
         "noNegationElse": "error",
