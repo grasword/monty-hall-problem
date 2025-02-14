@@ -1,5 +1,5 @@
 import type { FC } from 'react'
-import { testIds } from '../testIds.js'
+import { testIds } from '~/testIds.js'
 
 interface GameControlsProps {
   selectedDoor: number | null

@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { useSupabase } from '../contexts/supabase.tsx'
+import { useSupabase } from '~/contexts/supabase.tsx'
 
 interface GlobalStatistics {
   gamesPlayed: number
