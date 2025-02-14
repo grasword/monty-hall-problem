@@ -1,4 +1,4 @@
-import type React from 'react'
+import type { FC } from 'react'
 import { useState } from 'react'
 import { Door } from './components/Door.jsx'
 import { GameControls } from './components/GameControls.jsx'
@@ -7,10 +7,11 @@ import { Statistics } from './components/Statistics.jsx'
 import { useGlobalStatistics } from './hooks/useGlobalStatistics.js'
 import { useMontyHallGame } from './hooks/useMontyHallGame.js'
 import { useMontyHallStatistics } from './hooks/useMontyHallStatistics.js'
+// @ts-expect-error it's just a style
 import './styles/App.css'
 import { testIds } from './testIds.js'
 
-const App: React.FC = () => {
+const App: FC = () => {
   const { state, handleDoorClick, handleFinalChoice, handleReset } = useMontyHallGame()
   const { switchCount, switchWins, stickCount, stickWins, updateStatistics } = useMontyHallStatistics()
   const {
@@ -29,7 +30,7 @@ const App: React.FC = () => {
       updateStatistics(choice, state.selectedDoor, state.winningDoor)
     }
     if (state.selectedDoor !== null) {
-      updateGlobalStatistics(choice, state.selectedDoor, state.winningDoor)
+      void updateGlobalStatistics(choice, state.selectedDoor, state.winningDoor)
     }
   }
 

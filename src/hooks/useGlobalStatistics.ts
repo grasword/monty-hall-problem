@@ -51,7 +51,7 @@ const useGlobalStatistics = () => {
       }
     }
 
-    fetchGlobalStats()
+    void fetchGlobalStats()
   }, [])
 
   const updateGlobalStatistics = async (choice: Choice, selectedDoor: number, winningDoor: number): Promise<void> => {

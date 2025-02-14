@@ -1,4 +1,4 @@
-import type React from 'react'
+import type { FC } from 'react'
 
 interface StatisticsProps {
   switchCount: number
@@ -7,7 +7,7 @@ interface StatisticsProps {
   stickWins: number
 }
 
-const Statistics: React.FC<StatisticsProps> = ({ switchCount, switchWins, stickCount, stickWins }) => {
+const Statistics: FC<StatisticsProps> = ({ switchCount, switchWins, stickCount, stickWins }) => {
   const switchWinRate = switchCount ? (switchWins / switchCount) * 100 : 0
   const stickWinRate = stickCount ? (stickWins / stickCount) * 100 : 0
 

@@ -1,4 +1,4 @@
-import type React from 'react'
+import type { FC } from 'react'
 import { testIds } from '../testIds.js'
 
 interface GameControlsProps {
@@ -10,7 +10,7 @@ interface GameControlsProps {
   handleReset: () => void
 }
 
-const GameControls: React.FC<GameControlsProps> = ({
+const GameControls: FC<GameControlsProps> = ({
   selectedDoor,
   revealedDoor,
   finalChoice,

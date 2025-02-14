@@ -1,4 +1,4 @@
-import type React from 'react'
+import type { FC } from 'react'
 import { testIds } from '../testIds.js'
 
 interface DoorProps {
@@ -9,7 +9,7 @@ interface DoorProps {
   onSelect: (doorNumber: number) => void
 }
 
-const Door: React.FC<DoorProps> = ({ doorNumber, isSelected, isWinning, isRevealed, onSelect }) => {
+const Door: FC<DoorProps> = ({ doorNumber, isSelected, isWinning, isRevealed, onSelect }) => {
   const handleClick = () => {
     if (!isRevealed) {
       onSelect(doorNumber)

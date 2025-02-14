@@ -1,4 +1,4 @@
-import type React from 'react'
+import type { FC } from 'react'
 import { testIds } from '../testIds.js'
 
 interface GlobalStatisticsProps {
@@ -9,7 +9,7 @@ interface GlobalStatisticsProps {
   stickWins: number
 }
 
-const GlobalStatistics: React.FC<GlobalStatisticsProps> = ({
+const GlobalStatistics: FC<GlobalStatisticsProps> = ({
   gamesPlayed,
   switchCount,
   switchWins,
