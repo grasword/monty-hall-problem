@@ -4,14 +4,9 @@ export default [
   axiom(import.meta.dirname),
   {
     rules: {
-      'jsdoc/require-jsdoc': 'off',
       'import-x/no-default-export': 'off',
-      'n/no-unpublished-import': [
-        'error',
-        {
-          allowModules: ['vite', 'vitest', '@wdio/globals', '@testing-library/jest-dom', '@testing-library/react']
-        }
-      ]
+      'jsdoc/require-jsdoc': 'off',
+      'n/no-unpublished-import': 'off'
     }
   }
 ].flat()
