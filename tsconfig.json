@@ -1,4 +1,14 @@
 {
   "extends": "@tsconfig/vite-react/tsconfig.json",
+  "compilerOptions": {
+    "types": [
+      "@types/node",
+      "@types/react-dom",
+      "@types/react",
+      "@wdio/globals/types",
+      "@wdio/mocha-framework",
+      "vite/client"
+    ]
+  },
   "include": ["src", "tests", "wdio.conf.ts", "vite.config.ts", "vitest.config.ts"]
 }
