@@ -7,11 +7,9 @@ import { Statistics } from './components/Statistics.jsx'
 import { useGlobalStatistics } from './hooks/useGlobalStatistics.js'
 import { useMontyHallGame } from './hooks/useMontyHallGame.js'
 import { useMontyHallStatistics } from './hooks/useMontyHallStatistics.js'
-// @ts-expect-error it's just a style
-import './styles/App.css'
 import { testIds } from './testIds.js'
 
-const App: FC = () => {
+export const App: FC = () => {
   const { state, handleDoorClick, handleFinalChoice, handleReset } = useMontyHallGame()
   const { switchCount, switchWins, stickCount, stickWins, updateStatistics } = useMontyHallStatistics()
   const {
@@ -86,5 +84,3 @@ const App: FC = () => {
     </div>
   )
 }
-
-export { App }
