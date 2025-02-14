@@ -1,4 +1,4 @@
-// eslint-ignore
+/* eslint-disable jsdoc/valid-types */
 const isHeadless = process.env.HEADLESS === 'true'
 
 export const config: WebdriverIO.Config = {
