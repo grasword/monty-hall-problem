@@ -1,3 +1,4 @@
+import tsconfigPaths from 'vite-tsconfig-paths'
 import { coverageConfigDefaults, defineConfig } from 'vitest/config'
 
 export default defineConfig({
@@ -10,5 +11,6 @@ export default defineConfig({
       exclude: ['build', ...coverageConfigDefaults.exclude],
       provider: 'v8'
     }
-  }
+  },
+  plugins: [tsconfigPaths()]
 })
