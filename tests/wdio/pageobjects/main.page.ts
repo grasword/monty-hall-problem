@@ -31,6 +31,15 @@ class MainPage extends Page {
   public get globalStatistics() {
     return $(getByTestId(testIds.globalStats.container))
   }
+
+  public get title() {
+    return $(getByTestId(testIds.app.title))
+  }
+
+  public async visit() {
+    await this.open('/')
+    await this.title.waitForDisplayed()
+  }
 }
 
 export const mainPage = new MainPage()

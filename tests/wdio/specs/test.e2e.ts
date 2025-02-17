@@ -3,7 +3,7 @@ import { mainPage } from '../pageobjects/main.page'
 
 describe('Monty Hall application', () => {
   beforeEach(async () => {
-    await mainPage.open()
+    await mainPage.visit()
   })
 
   it('should allow the user to select a door and stick with the choice', async () => {
