@@ -29,12 +29,14 @@ jobs:
       - name: Install dependencies
         run: npm install
 
-      - name: Start the application
+      - name: npm run build
         env:
           SUPABASE_URL: ${{secrets.SUPABASE_URL}}
           SUPABASE_ANON_KEY: ${{secrets.SUPABASE_ANON_KEY}}
+        run: npm run build
+
+      - name: Start the application
         run: |
-          npm run build &
           npm run preview &
           npx wait-on http://localhost:4321
 
