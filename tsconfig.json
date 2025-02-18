@@ -13,7 +13,8 @@
       "@types/react",
       "@wdio/globals/types",
       "@wdio/mocha-framework",
-      "vite/client"
+      "vite/client",
+      "wdio-intercept-service"
     ]
   },
   "include": [
