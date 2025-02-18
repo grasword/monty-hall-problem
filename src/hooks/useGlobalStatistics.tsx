@@ -60,37 +60,31 @@ export const useGlobalStatistics = () => {
   }, [supabase])
 
   const updateGlobalStatistics = async (choice: Choice, selectedDoor: number, winningDoor: number): Promise<void> => {
-    const isWin = choice === winningDoor
-    const isStick = choice === selectedDoor
-
-    const { data, error } = await supabase.from('statistics').select('*').eq('id', 'global').single()
+    const { error } = await supabase.rpc('update_global_statistics', {
+      choice,
+      // biome-ignore lint/style/useNamingConvention: <explanation>
+      selected_door: selectedDoor,
+      // biome-ignore lint/style/useNamingConvention: <explanation>
+      winning_door: winningDoor
+    })
 
     if (error) {
-      console.error('Error fetching statistics:', error)
-      return
-    }
-
-    const currentStats = data as GlobalStatistics
-
-    const updates: GlobalStatistics = {
-      gamesPlayed: currentStats.gamesPlayed + 1,
-      stickCount: isStick ? currentStats.stickCount + 1 : currentStats.stickCount,
-      stickWins: isStick && isWin ? currentStats.stickWins + 1 : currentStats.stickWins,
-      switchCount: isStick ? currentStats.switchCount : currentStats.switchCount + 1,
-      switchWins: !isStick && isWin ? currentStats.switchWins + 1 : currentStats.switchWins
-    }
-
-    const { error: updateError } = await supabase.from('statistics').update(updates).eq('id', 'global')
-
-    if (updateError) {
-      console.error('Error updating statistics:', updateError)
+      console.error('Error updating statistics:', error)
     } else {
-      // Update state
-      setGamesPlayed(updates.gamesPlayed)
-      setStickCount(updates.stickCount)
-      setStickWins(updates.stickWins)
-      setSwitchCount(updates.switchCount)
-      setSwitchWins(updates.switchWins)
+      // Fetch the updated statistics to update the state
+      const { data, error: fetchError } = await supabase.from('statistics').select('*').eq('id', 'global').single()
+
+      if (fetchError) {
+        console.error('Error fetching updated statistics:', fetchError)
+        return
+      }
+
+      const updatedStats = data as GlobalStatistics
+      setGamesPlayed(updatedStats.gamesPlayed)
+      setStickCount(updatedStats.stickCount)
+      setStickWins(updatedStats.stickWins)
+      setSwitchCount(updatedStats.switchCount)
+      setSwitchWins(updatedStats.switchWins)
     }
   }
 
