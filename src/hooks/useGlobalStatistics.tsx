@@ -63,18 +63,27 @@ export const useGlobalStatistics = () => {
     const isWin = choice === winningDoor
     const isStick = choice === selectedDoor
 
-    const updates: GlobalStatistics = {
-      gamesPlayed: gamesPlayed + 1,
-      stickCount: isStick ? stickCount + 1 : stickCount,
-      stickWins: isStick && isWin ? stickWins + 1 : stickWins,
-      switchCount: isStick ? switchCount : switchCount + 1,
-      switchWins: !isStick && isWin ? switchWins + 1 : switchWins
-    }
-
-    const { error } = await supabase.from('statistics').update(updates).eq('id', 'global')
+    const { data, error } = await supabase.from('statistics').select('*').eq('id', 'global').single()
 
     if (error) {
-      console.error('Error updating statistics:', error)
+      console.error('Error fetching statistics:', error)
+      return
+    }
+
+    const currentStats = data as GlobalStatistics
+
+    const updates: GlobalStatistics = {
+      gamesPlayed: currentStats.gamesPlayed + 1,
+      stickCount: isStick ? currentStats.stickCount + 1 : currentStats.stickCount,
+      stickWins: isStick && isWin ? currentStats.stickWins + 1 : currentStats.stickWins,
+      switchCount: isStick ? currentStats.switchCount : currentStats.switchCount + 1,
+      switchWins: !isStick && isWin ? currentStats.switchWins + 1 : currentStats.switchWins
+    }
+
+    const { error: updateError } = await supabase.from('statistics').update(updates).eq('id', 'global')
+
+    if (updateError) {
+      console.error('Error updating statistics:', updateError)
     } else {
       // Update state
       setGamesPlayed(updates.gamesPlayed)
