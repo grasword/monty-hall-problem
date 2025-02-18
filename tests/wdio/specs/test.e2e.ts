@@ -10,22 +10,22 @@ describe('Monty Hall application', () => {
     await mainPage.door(0).click()
     await mainPage.stickButton.click()
 
-    await expect(mainPage.resultMessage).toBeExisting()
+    await expect(mainPage.resultMessage).toBeDisplayed()
   })
 
   it('should allow the user to select a door and switch the choice', async () => {
     await mainPage.door(1).click()
     await mainPage.switchButton.click()
 
-    await expect(mainPage.resultMessage).toBeExisting()
+    await expect(mainPage.resultMessage).toBeDisplayed()
   })
 
   it('should allow the user to show and hide global statistics', async () => {
     await mainPage.toggleGlobalStatsButton.click()
-    await expect(mainPage.globalStatistics).toBeExisting()
+    await expect(mainPage.globalStatistics).toBeDisplayed()
 
     await mainPage.toggleGlobalStatsButton.click()
-    await expect(mainPage.globalStatistics).not.toBeExisting()
+    await expect(mainPage.globalStatistics).not.toBeDisplayed()
   })
 
   it('should reset the game correctly after clicking "Play Again"', async () => {
@@ -33,8 +33,8 @@ describe('Monty Hall application', () => {
     await mainPage.stickButton.click()
     await mainPage.playAgainButton.click()
 
-    await expect(mainPage.door(0)).toBeExisting()
-    await expect(mainPage.resultMessage).not.toBeExisting()
+    await expect(mainPage.door(0)).toBeDisplayed()
+    await expect(mainPage.resultMessage).not.toBeDisplayed()
   })
 
   it('should display the correct win/loss message based on the final choice', async () => {
