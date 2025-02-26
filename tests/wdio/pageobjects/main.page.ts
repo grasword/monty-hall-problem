@@ -9,23 +9,23 @@ class MainPage extends Page {
   }
 
   public get stickButton() {
-    return $(getByTestId(testIds.app.stickButton))
+    return $(getByTestId(testIds.main.stickButton))
   }
 
   public get switchButton() {
-    return $(getByTestId(testIds.app.switchButton))
+    return $(getByTestId(testIds.main.switchButton))
   }
 
   public get resultMessage() {
-    return $(getByTestId(testIds.app.resultMessage))
+    return $(getByTestId(testIds.main.resultMessage))
   }
 
   public get playAgainButton() {
-    return $(getByTestId(testIds.app.playAgainButton))
+    return $(getByTestId(testIds.main.playAgainButton))
   }
 
   public get toggleGlobalStatsButton() {
-    return $(getByTestId(testIds.app.toggleGlobalStats))
+    return $(getByTestId(testIds.main.toggleGlobalStats))
   }
 
   public get globalStatistics() {
@@ -33,7 +33,11 @@ class MainPage extends Page {
   }
 
   public get title() {
-    return $(getByTestId(testIds.app.title))
+    return $(getByTestId(testIds.main.title))
+  }
+
+  public get gamesPlayed() {
+    return $(getByTestId(testIds.globalStats.gamesPlayedValue))
   }
 
   public async visit() {
