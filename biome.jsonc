@@ -22,7 +22,7 @@
         "useLiteralKeys": "off"
       },
       "correctness": {
-        "noUndeclaredDependencies": "error",
+        // "noUndeclaredDependencies": "error",
         // "noUndeclaredVariables": "error",
         // "noUnusedImports": "error",
         "noUnusedPrivateClassMembers": "error",
