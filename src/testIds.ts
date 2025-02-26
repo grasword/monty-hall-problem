@@ -1,5 +1,5 @@
 export const testIds = {
-  app: {
+  main: {
     container: 'app-container',
     title: 'app-title',
     subtitle: 'app-subtitle',
@@ -14,6 +14,11 @@ export const testIds = {
     label: `door-${doorNumber}-label`
   }),
   globalStats: {
-    container: 'globalStats-container'
+    container: 'globalStats-container',
+    title: 'globalStats-title',
+    gamesPlayed: 'globalStats-gamesPlayed',
+    gamesPlayedValue: 'globalStats-gamesPlayed-value',
+    switchStats: 'globalStats-switchStats',
+    stickStats: 'globalStats-stickStats'
   }
 }

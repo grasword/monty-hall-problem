@@ -33,11 +33,14 @@ export const Main: FC = () => {
   }
 
   return (
-    <div className='flex flex-col items-center justify-center h-screen bg-gray-100' data-testid={testIds.app.container}>
-      <h1 className='text-4xl font-bold mb-8' data-testid={testIds.app.title}>
+    <div
+      className='flex flex-col items-center justify-center h-screen bg-gray-100'
+      data-testid={testIds.main.container}
+    >
+      <h1 className='text-4xl font-bold mb-8' data-testid={testIds.main.title}>
         Monty Hall Problem
       </h1>
-      <h2 className='text-2xl mb-4' data-testid={testIds.app.subtitle}>
+      <h2 className='text-2xl mb-4' data-testid={testIds.main.subtitle}>
         Select a door:
       </h2>
       <div className='flex'>
@@ -68,7 +71,7 @@ export const Main: FC = () => {
         type='button'
         className='mt-4 px-4 py-2 bg-blue-500 text-white rounded'
         onClick={() => setShowGlobalStats(!showGlobalStats)}
-        data-testid={testIds.app.toggleGlobalStats}
+        data-testid={testIds.main.toggleGlobalStats}
       >
         {showGlobalStats ? 'Hide Global Statistics' : 'Show Global Statistics'}
       </button>

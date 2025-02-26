@@ -1,5 +1,5 @@
-import type { FC } from 'react'
-import { testIds } from '~/testIds.js'
+import type React from 'react'
+import { testIds } from '../testIds.js'
 
 interface GlobalStatisticsProps {
   gamesPlayed: number
@@ -9,7 +9,7 @@ interface GlobalStatisticsProps {
   stickWins: number
 }
 
-const GlobalStatistics: FC<GlobalStatisticsProps> = ({
+const GlobalStatistics: React.FC<GlobalStatisticsProps> = ({
   gamesPlayed,
   switchCount,
   switchWins,
@@ -21,13 +21,17 @@ const GlobalStatistics: FC<GlobalStatisticsProps> = ({
 
   return (
     <div className='mt-8 text-center' data-testid={testIds.globalStats.container}>
-      <h2 className='text-2xl mb-4'>Global Statistics</h2>
-      <p>Games Played: {gamesPlayed}</p>
-      <p>
+      <h2 className='text-2xl mb-4' data-testid={testIds.globalStats.title}>
+        Global Statistics
+      </h2>
+      <p data-testid={testIds.globalStats.gamesPlayed}>
+        Games Played: <span data-testid={testIds.globalStats.gamesPlayedValue}>{gamesPlayed}</span>
+      </p>
+      <p data-testid={testIds.globalStats.switchStats}>
         <span className='text-green-500 font-bold'>Switch</span>: {switchWins}/{switchCount}, {switchWinRate.toFixed(2)}
         %
       </p>
-      <p>
+      <p data-testid={testIds.globalStats.stickStats}>
         <span className='text-red-500 font-bold'>Stick</span>: {stickWins}/{stickCount}, {stickWinRate.toFixed(2)}%
       </p>
     </div>

@@ -30,7 +30,7 @@ const GameControls: FC<GameControlsProps> = ({
             type='button'
             className='px-4 py-2 bg-red-500 text-white rounded mr-4'
             onClick={() => handleFinalChoice(selectedDoor)}
-            data-testid={testIds.app.stickButton}
+            data-testid={testIds.main.stickButton}
           >
             Stick
           </button>
@@ -38,7 +38,7 @@ const GameControls: FC<GameControlsProps> = ({
             type='button'
             className='px-4 py-2 bg-green-500 text-white rounded'
             onClick={() => handleFinalChoice(3 - selectedDoor - revealedDoor)}
-            data-testid={testIds.app.switchButton}
+            data-testid={testIds.main.switchButton}
           >
             Switch
           </button>
@@ -47,14 +47,14 @@ const GameControls: FC<GameControlsProps> = ({
       {finalChoice !== null && (
         <div className='mt-8 text-center'>
           <p className='mb-4'>You chose door {finalChoice + 1}.</p>
-          <p className='mb-4' data-testid={testIds.app.resultMessage}>
+          <p className='mb-4' data-testid={testIds.main.resultMessage}>
             {finalChoice === winningDoor ? 'You win!' : 'You lose!'}
           </p>
           <button
             type='button'
             className='px-4 py-2 bg-blue-500 text-white rounded'
             onClick={handleReset}
-            data-testid={testIds.app.playAgainButton}
+            data-testid={testIds.main.playAgainButton}
           >
             Play Again
           </button>
