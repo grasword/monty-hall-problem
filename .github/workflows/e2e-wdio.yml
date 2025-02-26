@@ -42,4 +42,4 @@ jobs:
 
 
       - name: Run E2E tests
-        run: npm run wdio:headless
+        run: npm run test:wdio:headless

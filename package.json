@@ -2,11 +2,7 @@
   "name": "monty-hall-problem",
   "version": "1.0.0",
   "description": "A React application to practice the Monty Hall problem.",
-  "keywords": [
-    "monty-hall",
-    "react",
-    "typescript"
-  ],
+  "keywords": ["monty-hall", "react", "typescript"],
   "homepage": "https://github.com/grasword/monty-hall-problem#readme",
   "bugs": {
     "url": "https://github.com/grasword/monty-hall-problem/issues"
@@ -28,8 +24,10 @@
     "preview": "astro preview",
     "test": "vitest run",
     "test:coverage": "vitest run --coverage",
-    "wdio": "wdio run ./wdio.conf.ts",
-    "wdio:headless": "HEADLESS=true wdio run ./wdio.conf.ts"
+    "test:playwright": "npx playwright test --ui",
+    "test:playwright:headless": "npx playwright test",
+    "test:wdio": "wdio run ./wdio.conf.ts",
+    "test:wdio:headless": "HEADLESS=true wdio run ./wdio.conf.ts"
   },
   "dependencies": {
     "@astrojs/react": "4.2.0",
