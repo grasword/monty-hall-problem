@@ -24,6 +24,7 @@
     "tests",
     "vite.config.ts",
     "vitest.config.ts",
-    "wdio.conf.ts"
+    "wdio.conf.ts",
+    "playwright.config.ts"
   ]
 }
