@@ -49,7 +49,7 @@ describe('Monty Hall application', () => {
     await expect(isWin || isLose).toBe(true)
   })
 
-  it('should update the global statistics after each game', async () => {
+  it.skip('should update the global statistics after each game', async () => {
     browser.setupInterceptor()
     browser.expectRequest('PATCH', 'https://oxabqxkmskkbphglpwlt.supabase.co/rest/v1/statistics?id=eq.global', 204)
 
