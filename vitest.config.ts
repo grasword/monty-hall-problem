@@ -3,7 +3,7 @@ import { coverageConfigDefaults, defineConfig } from 'vitest/config'
 
 export default defineConfig({
   test: {
-    exclude: ['build', 'node_modules'],
+    exclude: ['build', 'node_modules', 'tests'],
     environment: 'jsdom',
     setupFiles: './src/setupTests.ts',
     globals: true,
