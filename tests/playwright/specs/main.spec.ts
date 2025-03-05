@@ -3,7 +3,7 @@ import { MainPage } from '../pageobjects/main-page.js'
 
 test.describe('Monty Hall application', () => {
   let mainPage: MainPage
-  const selectedDoorClass = 'bg-yellow-400'
+  const selectedDoorClass = /bg-yellow-400/
 
   test.beforeEach(async ({ page }) => {
     mainPage = new MainPage(page)
