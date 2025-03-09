@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: monty-hall-deployment
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: monty-hall
+  template:
+    metadata:
+      labels:
+        app: monty-hall
+    spec:
+      containers:
+      - name: monty-hall
+        image: monty-hall-app:latest
+        imagePullPolicy: Never
+        ports:
+        - containerPort: 80
