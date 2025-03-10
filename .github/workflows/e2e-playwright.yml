@@ -2,6 +2,8 @@ name: E2E playwright tests
 
 on:
   push:
+  schedule:
+    - cron: '0 20 * * *'  # Runs at 20:00 UTC every day
 
 jobs:
   e2e:
