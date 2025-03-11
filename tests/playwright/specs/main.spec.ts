@@ -61,7 +61,20 @@ test.describe('Monty Hall application', () => {
     expect(isWin || isLose).toBe(true)
   })
 
-  test.skip('should update the global statistics after each game', async () => {
-    // Implement the test for updating global statistics if needed
+  test('should update the global statistics after each game', async () => {
+    await mainPage.waitForInitialStatsResponse()
+    await mainPage.toggleGlobalStatsButton.click()
+
+    const initialGamesPlayed = await mainPage.getGamesPlayedCount()
+
+    await mainPage.door(1).click()
+    await expect(mainPage.door(1)).toHaveClass(selectedDoorClass)
+
+    await mainPage.stickButton.click()
+
+    await expect(async () => {
+      const newGamesPlayed = await mainPage.getGamesPlayedCount()
+      expect(newGamesPlayed).toBeGreaterThan(initialGamesPlayed)
+    }).toPass()
   })
 })

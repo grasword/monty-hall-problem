@@ -39,6 +39,16 @@ export class MainPage extends AbstractPage {
     return this.page.getByTestId(testIds.globalStats.gamesPlayedValue)
   }
 
+  public async getGamesPlayedCount(): Promise<number> {
+    return Number.parseInt(await this.getTextContent(this.gamesPlayed))
+  }
+
+  public async waitForInitialStatsResponse() {
+    return this.page.waitForResponse(
+      (response) => response.url().includes('supabase.co/rest/v1/statistics') && response.status() === 200
+    )
+  }
+
   public async visit() {
     await this.open('/')
     await this.title.waitFor()
