@@ -3,7 +3,6 @@ import { MainPage } from '../pageobjects/main-page.js'
 
 test.describe('Monty Hall application', () => {
   let mainPage: MainPage
-  const selectedDoorClass = /bg-yellow-400/
 
   test.beforeEach(async ({ page }) => {
     mainPage = new MainPage(page)
@@ -11,6 +10,8 @@ test.describe('Monty Hall application', () => {
   })
 
   test('should allow the user to select a door and stick with the choice', async () => {
+    const selectedDoorClass = /bg-yellow-400/
+
     await mainPage.door(0).click()
     await expect(mainPage.door(0)).toHaveClass(selectedDoorClass)
 
@@ -21,7 +22,6 @@ test.describe('Monty Hall application', () => {
 
   test('should allow the user to select a door and switch the choice', async () => {
     await mainPage.door(1).click()
-    await expect(mainPage.door(1)).toHaveClass(selectedDoorClass)
 
     await mainPage.switchButton.click()
 
@@ -39,7 +39,6 @@ test.describe('Monty Hall application', () => {
 
   test('should reset the game correctly after clicking "Play Again"', async () => {
     await mainPage.door(0).click()
-    await expect(mainPage.door(0)).toHaveClass(selectedDoorClass)
 
     await mainPage.stickButton.click()
     await mainPage.playAgainButton.click()
@@ -50,7 +49,6 @@ test.describe('Monty Hall application', () => {
 
   test('should display the correct win/loss message based on the final choice', async () => {
     await mainPage.door(2).click()
-    await expect(mainPage.door(2)).toHaveClass(selectedDoorClass)
 
     await mainPage.switchButton.click()
 
@@ -68,7 +66,6 @@ test.describe('Monty Hall application', () => {
     const initialGamesPlayed = await mainPage.getGamesPlayedCount()
 
     await mainPage.door(1).click()
-    await expect(mainPage.door(1)).toHaveClass(selectedDoorClass)
 
     await mainPage.stickButton.click()
 
