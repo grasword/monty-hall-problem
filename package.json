@@ -2,7 +2,11 @@
   "name": "monty-hall-problem",
   "version": "1.0.0",
   "description": "A React application to practice the Monty Hall problem.",
-  "keywords": ["monty-hall", "react", "typescript"],
+  "keywords": [
+    "monty-hall",
+    "react",
+    "typescript"
+  ],
   "homepage": "https://github.com/grasword/monty-hall-problem#readme",
   "bugs": {
     "url": "https://github.com/grasword/monty-hall-problem/issues"
@@ -50,6 +54,7 @@
     "@types/node": "22.13.4",
     "@types/react": "19.0.8",
     "@types/react-dom": "19.0.3",
+    "@typescript-eslint/parser": "8.26.1",
     "@vitest/coverage-v8": "3.0.5",
     "@wdio/cli": "9.9.0",
     "@wdio/globals": "9.9.0",
