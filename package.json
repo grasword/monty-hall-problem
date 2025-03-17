@@ -2,11 +2,7 @@
   "name": "monty-hall-problem",
   "version": "1.0.0",
   "description": "A React application to practice the Monty Hall problem.",
-  "keywords": [
-    "monty-hall",
-    "react",
-    "typescript"
-  ],
+  "keywords": ["monty-hall", "react", "typescript"],
   "homepage": "https://github.com/grasword/monty-hall-problem#readme",
   "bugs": {
     "url": "https://github.com/grasword/monty-hall-problem/issues"
@@ -35,6 +31,7 @@
   },
   "dependencies": {
     "@astrojs/react": "4.2.0",
+    "@estruyf/github-actions-reporter": "1.10.0",
     "@supabase/supabase-js": "2.48.1",
     "@tailwindcss/vite": "4.0.6",
     "astro": "5.3.0",
