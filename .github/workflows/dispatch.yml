@@ -12,11 +12,7 @@ jobs:
       - name: "🧪 Trigger E2E Tests"
         uses: peter-evans/repository-dispatch@v3
         with:
-          token: ${{ secrets.GITHUB_TOKEN }}
+          # repository: ${{ github.repository }}
+          # token: ${{ secrets.GITHUB_TOKEN }}
           event-type: platform-environment-ready
-          client-payload: |-
-            {
-              "pr_number": "Test",
-              "environment_url": "https://test.com",
-              "branch":  "test"
-            }
+          client-payload: '{"ref": "${{ github.ref }}", "sha": "${{ github.sha }}"}'
