@@ -9,7 +9,11 @@ jobs:
     steps:
       - name: Repository Dispatch
         uses: peter-evans/repository-dispatch@v3
+        id: dispatch
         with:
           repository: grasword/monty-hall-problem
           event-type: my-event
           client-payload: '{"ref": "${{ github.ref }}", "sha": "${{ github.sha }}"}'
+
+      - name: Echo Dispatched Event
+        run: echo ${{ join(steps.dispatch.outputs.*, '\n') }}
