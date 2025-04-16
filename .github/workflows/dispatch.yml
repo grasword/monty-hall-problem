@@ -1,19 +1,17 @@
-name: Dispatch E2E Tests
+name: Test Dispatch
+on: workflow_dispatch
 
-on:
-  push:
+permissions:
+  pull-requests: write
+  contents: write
 
 jobs:
-  e2eaabb:
+  test:
     runs-on: ubuntu-latest
     steps:
-      - name: Repository Dispatch
+      - name: Test repository dispatch
         uses: peter-evans/repository-dispatch@v3
-        id: dispatch
         with:
-          repository: grasword/monty-hall-problem
-          event-type: my-event
+          # token: ${{ secrets.PUBLIC_REPO_SCOPED_TOKEN }}
+          event-type: tests
           client-payload: '{"ref": "${{ github.ref }}", "sha": "${{ github.sha }}"}'
-
-      - name: Echo Dispatched Event
-        run: echo ${{ join(steps.dispatch.outputs.*, '\n') }}
