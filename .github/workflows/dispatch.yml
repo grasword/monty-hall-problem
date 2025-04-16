@@ -6,12 +6,11 @@ on:
 jobs:
   e2eaabb:
     runs-on: ubuntu-latest
-    timeout-minutes: 20
 
     steps:
-      - name: "🧪 Trigger E2E Tests"
+      - name: 11111
         uses: peter-evans/repository-dispatch@v3
         with:
           repository: grasword/monty-hall-problem
-          token: ${{ secrets.GITHUB_TOKEN }}
+          token: fffff
           event-type: aabb
