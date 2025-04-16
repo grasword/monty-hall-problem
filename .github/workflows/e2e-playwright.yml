@@ -2,7 +2,7 @@ name: E2E playwright tests
 
 on:
   repository_dispatch:
-    types: [platform-environment-ready]
+    types: [aabb]
 
 jobs:
   e2e:

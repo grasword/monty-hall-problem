@@ -4,7 +4,7 @@ on:
   push:
 
 jobs:
-  e2e:
+  e2eaabb:
     runs-on: ubuntu-latest
     timeout-minutes: 20
 
@@ -12,7 +12,6 @@ jobs:
       - name: "🧪 Trigger E2E Tests"
         uses: peter-evans/repository-dispatch@v3
         with:
-          # repository: ${{ github.repository }}
-          # token: ${{ secrets.GITHUB_TOKEN }}
-          event-type: platform-environment-ready
-          client-payload: '{"ref": "${{ github.ref }}", "sha": "${{ github.sha }}"}'
+          repository: grasword/monty-hall-problem
+          token: ${{ secrets.GITHUB_TOKEN }}
+          event-type: aabb
