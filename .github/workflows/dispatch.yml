@@ -13,5 +13,6 @@ jobs:
         uses: peter-evans/repository-dispatch@v3
         with:
           # token: ${{ secrets.PUBLIC_REPO_SCOPED_TOKEN }}
+          # comment out the token to use the default token
           event-type: tests
           client-payload: '{"ref": "${{ github.ref }}", "sha": "${{ github.sha }}"}'
