@@ -1,9 +1,8 @@
 name: E2E playwright tests
 
 on:
-  push:
-  schedule:
-    - cron: '0 20 * * *'  # Runs at 20:00 UTC every day
+  repository_dispatch:
+    types: [platform-environment-ready]
 
 jobs:
   e2e:

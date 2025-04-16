@@ -1,0 +1,22 @@
+name: Dispatch E2E Tests
+
+on:
+  push:
+
+jobs:
+  e2e:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+
+    steps:
+      - name: "🧪 Trigger E2E Tests"
+        uses: peter-evans/repository-dispatch@v3
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          event-type: platform-environment-ready
+          client-payload: |-
+            {
+              "pr_number": "Test",
+              "environment_url": "https://test.com",
+              "branch":  "test"
+            }
