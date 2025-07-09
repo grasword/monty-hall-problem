@@ -20,7 +20,7 @@ test.describe('Monty Hall application', () => {
     await expect(mainPage.resultMessage).toBeVisible()
   })
 
-  test.skip('should allow the user to select a door and switch the choice', async () => {
+  test('should allow the user to select a door and switch the choice', async () => {
     await mainPage.door(1).click()
 
     await mainPage.switchButton.click()
