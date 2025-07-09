@@ -40,8 +40,8 @@ jobs:
           npm run preview &
           npx wait-on http://localhost:4321
 
-      - name: Install Playwright Browsers
-        run: npx playwright install --with-deps
+      - name: "🔧 Install Playwright Chromium Browser"
+        run: npx playwright install chromium --only-shell
 
       - name: Run Playwright tests
         run: npm run test:playwright:headless
