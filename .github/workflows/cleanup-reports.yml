@@ -1,0 +1,35 @@
+name: Clean up test reports
+
+on:
+  delete:
+
+jobs:
+  cleanup:
+    runs-on: ubuntu-latest
+    if: github.event.ref_type == 'branch'
+
+    steps:
+      - name: Checkout gh-pages branch
+        uses: actions/checkout@v4
+        with:
+          ref: gh-pages
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Remove report directory for deleted branch
+        run: |
+          BRANCH_NAME="${{ github.event.ref }}"
+          if [ -d "$BRANCH_NAME" ]; then
+            echo "Removing report directory for branch: $BRANCH_NAME"
+            rm -rf "$BRANCH_NAME"
+
+            # Configure git
+            git config --local user.email "action@github.com"
+            git config --local user.name "GitHub Action"
+
+            # Commit and push changes
+            git add .
+            git commit -m "Remove test reports for deleted branch: $BRANCH_NAME" || exit 0
+            git push
+          else
+            echo "No report directory found for branch: $BRANCH_NAME"
+          fi
