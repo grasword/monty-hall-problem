@@ -28,7 +28,7 @@ test.describe('Monty Hall application', () => {
     await expect(mainPage.resultMessage).toBeVisible()
   })
 
-  test.skip('should allow the user to show and hide global statistics', async () => {
+  test('should allow the user to show and hide global statistics', async () => {
     await expect(mainPage.globalStatistics).not.toBeVisible()
     await mainPage.toggleGlobalStatsButton.click()
     await expect(mainPage.globalStatistics).toBeVisible()
