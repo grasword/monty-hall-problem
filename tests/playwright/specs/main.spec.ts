@@ -47,7 +47,7 @@ test.describe('Monty Hall application', () => {
     await expect(mainPage.resultMessage).not.toBeVisible()
   })
 
-  test.skip('should display the correct win/loss message based on the final choice', async () => {
+  test('should display the correct win/loss message based on the final choice', async () => {
     await mainPage.door(2).click()
 
     await mainPage.switchButton.click()
@@ -59,7 +59,7 @@ test.describe('Monty Hall application', () => {
     expect(isWin || isLose).toBe(true)
   })
 
-  test.skip('should update the global statistics after each game', async () => {
+  test('should update the global statistics after each game', async () => {
     await mainPage.waitForInitialStatsResponse()
     await mainPage.toggleGlobalStatsButton.click()
 
