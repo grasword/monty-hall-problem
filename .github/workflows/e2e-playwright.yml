@@ -41,9 +41,10 @@ jobs:
       - name: Run Playwright tests
         run: npm run test:playwright:headless
 
-      - uses: actions/upload-artifact@v4
+      - name: "⬆️ Upload Test Results"
         if: ${{ !cancelled() }}
+        uses: actions/upload-artifact@v4
         with:
-          name: allure-results
-          path: allure-results/
+          name: playwright-report
+          path: playwright-report/
           retention-days: 14
