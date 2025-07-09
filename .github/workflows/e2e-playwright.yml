@@ -8,14 +8,7 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 20
 
-    outputs:
-        timestamp: ${{ steps.timestampid.outputs.timestamp }}
-
     steps:
-      - name: Set a timestamp
-        id: timestampid
-        run: echo "timestamp=$(date --utc +%Y%m%d_%H%M%SZ)" >> "$GITHUB_OUTPUT"
-
       - name: Checkout code
         uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4
         with:
@@ -50,7 +43,7 @@ jobs:
         if: ${{ !cancelled() }}
         uses: actions/upload-artifact@v4
         with:
-          name: playwright-report-${{ steps.timestampid.outputs.timestamp }}
+          name: playwright-report-${{ github.ref_name }}
           path: playwright-report/
           retention-days: 14
 
@@ -59,7 +52,7 @@ jobs:
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./playwright-report
-          destination_dir: ${{ steps.timestampid.outputs.timestamp }}
+          destination_dir: ${{ github.ref_name }}
 
       - name: Write URL in summary
-        run: echo "### Test results (link available after 20 secs) - https://${{ github.repository_owner }}.github.io/monty-hall-problem/${{ steps.timestampid.outputs.timestamp }}/" >> $GITHUB_STEP_SUMMARY
+        run: echo "### Test results (link available after 20 secs) - https://${{ github.repository_owner }}.github.io/monty-hall-problem/${{ github.ref_name }}/" >> $GITHUB_STEP_SUMMARY
