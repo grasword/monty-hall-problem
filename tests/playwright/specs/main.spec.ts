@@ -59,7 +59,7 @@ test.describe('Monty Hall application', () => {
     expect(isWin || isLose).toBe(true)
   })
 
-  test.skip('should update the global statistics after each game', async () => {
+  test('should update the global statistics after each game', async () => {
     await mainPage.waitForInitialStatsResponse()
     await mainPage.toggleGlobalStatsButton.click()
 
