@@ -48,6 +48,7 @@ jobs:
           retention-days: 14
 
       - name: Push the new files to github pages
+        if: ${{ !cancelled() }}
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
@@ -55,4 +56,5 @@ jobs:
           destination_dir: ${{ github.ref_name }}
 
       - name: Write URL in summary
+        if: ${{ !cancelled() }}
         run: echo "### Test results (link available after 20 secs) - https://${{ github.repository_owner }}.github.io/monty-hall-problem/${{ github.ref_name }}/" >> $GITHUB_STEP_SUMMARY
