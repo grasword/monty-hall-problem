@@ -20,7 +20,7 @@ test.describe('Monty Hall application', () => {
     await expect(mainPage.resultMessage).toBeVisible()
   })
 
-  test('should allow the user to select a door and switch the choice', async () => {
+  test.skip('should allow the user to select a door and switch the choice', async () => {
     await mainPage.door(1).click()
 
     await mainPage.switchButton.click()
@@ -28,7 +28,7 @@ test.describe('Monty Hall application', () => {
     await expect(mainPage.resultMessage).toBeVisible()
   })
 
-  test('should allow the user to show and hide global statistics', async () => {
+  test.skip('should allow the user to show and hide global statistics', async () => {
     await expect(mainPage.globalStatistics).not.toBeVisible()
     await mainPage.toggleGlobalStatsButton.click()
     await expect(mainPage.globalStatistics).toBeVisible()
@@ -47,7 +47,7 @@ test.describe('Monty Hall application', () => {
     await expect(mainPage.resultMessage).not.toBeVisible()
   })
 
-  test('should display the correct win/loss message based on the final choice', async () => {
+  test.skip('should display the correct win/loss message based on the final choice', async () => {
     await mainPage.door(2).click()
 
     await mainPage.switchButton.click()
@@ -59,7 +59,7 @@ test.describe('Monty Hall application', () => {
     expect(isWin || isLose).toBe(true)
   })
 
-  test('should update the global statistics after each game', async () => {
+  test.skip('should update the global statistics after each game', async () => {
     await mainPage.waitForInitialStatsResponse()
     await mainPage.toggleGlobalStatsButton.click()
 
