@@ -10,7 +10,14 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 20
 
+    outputs:
+        timestamp: ${{ steps.timestampid.outputs.timestamp }}
+
     steps:
+      - name: Set a timestamp
+        id: timestampid
+        run: echo "timestamp=$(date --utc +%Y%m%d_%H%M%SZ)" >> "$GITHUB_OUTPUT"
+
       - name: Checkout code
         uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4
         with:
@@ -45,6 +52,16 @@ jobs:
         if: ${{ !cancelled() }}
         uses: actions/upload-artifact@v4
         with:
-          name: playwright-report
+          name: playwright-report-${{ steps.timestampid.outputs.timestamp }}
           path: playwright-report/
           retention-days: 14
+
+      - name: Push the new files to github pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./playwright-report
+          destination_dir: ${{ steps.timestampid.outputs.timestamp }}
+
+      - name: Write URL in summary
+        run: echo "### Test results (link available after 20 secs) - https://${{ github.repository_owner }}.github.io/playwright-report/${{ steps.timestampid.outputs.timestamp }}/" >> $GITHUB_STEP_SUMMARY
