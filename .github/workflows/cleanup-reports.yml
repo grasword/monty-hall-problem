@@ -22,7 +22,7 @@ jobs:
             echo "Removing report directory for branch: $BRANCH_NAME"
             rm -rf "$BRANCH_NAME"
 
-           # Check if there are actually changes to commit
+            # Check if there are actually changes to commit
             if [ -n "$(git status --porcelain)" ]; then
               git config --local user.email "action@github.com"
               git config --local user.name "GitHub Action"
@@ -31,30 +31,38 @@ jobs:
               for i in {1..5}; do
                 echo "Attempt $i to push changes..."
 
-                # Pull latest changes first
-                if ! git pull --rebase origin gh-pages; then
-                  echo "Pull failed on attempt $i, retrying..."
-                  sleep $((i * 2))
-                  continue
-                fi
-
-                # Stage all changes
+                # Stage our changes first
                 git add .
 
-                # Only commit if there are staged changes
-                if ! git diff --staged --quiet; then
-                  git commit -m "Remove test reports for deleted branch: $BRANCH_NAME"
-
-                  # Try to push
-                  if git push; then
-                    echo "Successfully pushed changes on attempt $i"
-                    exit 0
-                  else
-                    echo "Push failed on attempt $i, retrying..."
-                  fi
-                else
-                  echo "No staged changes to commit after rebase"
+                # Check if we actually have changes to commit
+                if git diff --staged --quiet; then
+                  echo "No staged changes to commit"
                   exit 0
+                fi
+
+                # Commit our changes
+                git commit -m "Remove test reports for deleted branch: $BRANCH_NAME"
+
+                # Try to push
+                if git push; then
+                  echo "Successfully pushed changes on attempt $i"
+                  exit 0
+                else
+                  echo "Push failed on attempt $i, trying to rebase..."
+
+                  # Reset to before our commit
+                  git reset --soft HEAD~1
+
+                  # Pull with rebase
+                  if git pull --rebase origin gh-pages; then
+                    echo "Rebase successful, will retry commit and push"
+                  else
+                    echo "Rebase failed on attempt $i, retrying from scratch..."
+                    # Reset any staged changes and start over
+                    git reset --hard HEAD
+                    sleep $((i * 2))
+                    continue
+                  fi
                 fi
 
                 # Exponential backoff: wait 2, 4, 8, 16 seconds
