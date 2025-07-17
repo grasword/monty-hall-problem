@@ -21,15 +21,35 @@ jobs:
           if [ -d "$BRANCH_NAME" ]; then
             echo "Removing report directory for branch: $BRANCH_NAME"
             rm -rf "$BRANCH_NAME"
+            REMOVED=true
+          fi
 
-            # Configure git
+          if [ "$REMOVED" = true ]; then
             git config --local user.email "action@github.com"
             git config --local user.name "GitHub Action"
 
-            # Commit and push changes
-            git add .
-            git commit -m "Remove test reports for deleted branch: $BRANCH_NAME" || exit 0
-            git push
-          else
-            echo "No report directory found for branch: $BRANCH_NAME"
+            # Try to push changes up to 3 times
+            for i in {1..3}; do
+              # Stage changes before pull
+              git add .
+
+              # Try to create a commit if there are changes
+              if ! git diff --staged --quiet; then
+                git commit -m "Remove test reports for deleted branch: $BRANCH_NAME"
+              fi
+
+              # Pull with rebase
+              git pull --rebase origin gh-pages
+
+              if git push; then
+                echo "Successfully pushed changes on attempt $i"
+                exit 0
+              fi
+
+              echo "Push failed on attempt $i, retrying..."
+              sleep 5
+            done
+
+            echo "Failed to push after 3 attempts"
+            exit 1
           fi
